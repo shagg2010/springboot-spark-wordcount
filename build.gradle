@@ -1,0 +1,28 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.1'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.yadas.web.spark'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation ('org.springframework.boot:spring-boot-starter-web'){
+		exclude module: "spring-boot-starter-logging"
+		exclude module: "logback-classic"
+	}
+	implementation 'org.apache.spark:spark-core_2.12:2.4.0'
+	implementation 'com.thoughtworks.paranamer:paranamer:2.8'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
